@@ -64,6 +64,23 @@ from nltk.tokenize import word_tokenize
 ````
 O "word_tokenize" é um tokenizador simples que cria tokens das palavras e pontuações das frases.
 
+---
+````python
+list_tokens = []
+for pair in phrase_list_bit:
+    tokens_english = word_tokenize(pair["english"])
+    tokens_portuguese = word_tokenize(pair["portuguese"])
+    list_tokens.append(tokens_english)
+    list_tokens.append(tokens_portuguese)
+````
+Aplicação do "word_tokenize" nas frases da lista "phrase_list_bit".
+
+---
+````python
+for token in list_tokens:
+    print(token)
+````
+![image](https://github.com/HedvaldoCosta/TranslatorEN-PT/assets/67663958/34a5270b-fcb3-4a72-a4ed-9f0f5c90a88a)
 
 
 
