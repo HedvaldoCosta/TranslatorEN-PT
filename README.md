@@ -122,3 +122,48 @@ remote_dataset["train"]['translation'][0]['english']
 ![image](https://github.com/HedvaldoCosta/TranslatorEN-PT/assets/67663958/e0e73e14-eade-478e-ab85-f180d0b6c725)
 
 We can go into each index and get the phrases separately. We will be using this feature to pre-process the data.
+
+# Data pre-processing
+Cleaning and preparing data for training. Step in which we will tokenize our textual data.
+
+````python
+phrase_list_bit = [remote_dataset["train"]["translation"][c] for c in range(1, 10)]
+````
+````python
+phrase_list_bit
+````
+
+![image](https://github.com/HedvaldoCosta/TranslatorEN-PT/assets/67663958/12bebad8-fff0-44b9-8fdd-dc049ef4ef68)
+
+The code above grabs only 10 sentence pairs from the dataset to decrease preprocessing time.
+
+---
+````python
+!pip install nltk -q
+````
+
+To tokenize the sentences, we will be using the [NLTK](https://www.nltk.org) library.
+
+````python
+import nltk
+from nltk.tokenize import word_tokenize
+````
+"word_tokenize" is a simple tokenizer that tokenizes words and sentence punctuations.
+
+---
+````python
+list_tokens = []
+for pair in phrase_list_bit:
+    tokens_english = word_tokenize(pair["english"])
+    tokens_portuguese = word_tokenize(pair["portuguese"])
+    list_tokens.append(tokens_english)
+    list_tokens.append(tokens_portuguese)
+````
+Application of "word_tokenize" in the phrases of the "phrase_list_bit" list.
+
+---
+````python
+for token in list_tokens:
+    print(token)
+````
+![image](https://github.com/HedvaldoCosta/TranslatorEN-PT/assets/67663958/34a5270b-fcb3-4a72-a4ed-9f0f5c90a88a)
