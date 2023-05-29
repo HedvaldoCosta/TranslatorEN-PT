@@ -37,6 +37,36 @@ remote_dataset["train"]['translation'][0]['portuguese']
 
 Podemos entrar em cada índice e pegar as frases separadamente. Estaremos utilizando esse recurso para fazer o pré-processamento dos dados.
 
+# Pré-processamento de dados
+Limpeza e preparação os dados para o treinamento. Etapa em que faremos o tokenizer dos nossos dados textuais.
+
+````python
+phrase_list_bit = [remote_dataset["train"]["translation"][c] for c in range(1, 10)]
+````
+````python
+phrase_list_bit
+````
+
+![image](https://github.com/HedvaldoCosta/TranslatorEN-PT/assets/67663958/12bebad8-fff0-44b9-8fdd-dc049ef4ef68)
+
+O código acima pega apenas 10 pares de frases do conjunto de dados para diminuir o tempo de pré-processamento.
+
+---
+````python
+!pip install nltk -q
+````
+
+Para fazer a tokenização das frases, estaremos utilizando a biblioteca [NLTK](https://www.nltk.org).
+
+````python
+import nltk
+from nltk.tokenize import word_tokenize
+````
+O "word_tokenize" é um tokenizador simples que cria tokens das palavras e pontuações das frases.
+
+
+
+
 # Data collect
 A training dataset containing pairs of English sentences and their corresponding Portuguese translations is required. The larger and more diverse the dataset, the better your model will perform.
 
